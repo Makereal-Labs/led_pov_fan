@@ -2,8 +2,11 @@
 #include "draw_manager.h"
 #define HALL_PIN 2
 
-char * s = "042435";
-drawManager fan = drawManager(s,30);
+#include <stdlib.h>
+#include <TimeLib.h>
+
+
+drawManager fan = drawManager("04:24:35",33);
 
 void setup() {
 
@@ -22,10 +25,11 @@ void loop() {
   if(detected){
 
     fan.time_update();
+    fan.update_letters(hour(), minute(), second());
     while(digitalRead(HALL_PIN) == LOW);
     
   }
 
-  fan.draw();
+  fan.draw_number();
   
 }
