@@ -24,7 +24,7 @@ drawManager::drawManager(char * _letters , byte _startpos) : startpos(_startpos)
     pos = _startpos;
     last_rnd = 0;
     rnd_time = 200;
-    cur_letter = new Drawer(numbers[letters[cnt]-'0']);
+    cur_letter = new Drawer(ascii_letters[letters[cnt]]);
 
 };
 
@@ -36,7 +36,7 @@ void drawManager::time_update(){
     cnt = 0;
     
     free(cur_letter);
-    cur_letter = new Drawer(numbers[letters[cnt]-'0']);
+    cur_letter = new Drawer(ascii_letters[letters[cnt]]);
   
 }
 
@@ -56,7 +56,7 @@ void drawManager::draw_number(){
 
   //digitalWrite(3,(*letter_ptr - '0' < 10 && *letter_ptr - '0' > 0)?HIGH:LOW);
   digitalWrite(3,LOW);
-   if(cnt == 6) return;
+   if(letters[cnt] == '\0') return;
   digitalWrite(3,HIGH);
 
   if((micros() - last_rnd)*DISPLAY > rnd_time*pos){
@@ -80,13 +80,13 @@ void drawManager::next(){
 
     free(cur_letter);
     cnt++;
-    if(cnt == 6) return;
-    cur_letter = new Drawer(numbers[letters[cnt]-'0']);
+    if(letters[cnt] == '\0') return;
+    cur_letter = new Drawer(ascii_letters[letters[cnt]]);
 
 }
 
 void drawManager::update_letters(char h, char m, char s){
 
-    sprintf(letters, "%02d%02d%02d", h, m, s);
+    sprintf(letters, "%02d:%02d:%02d", h, m, s);
 
 }

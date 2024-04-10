@@ -6,7 +6,7 @@
 #include <TimeLib.h>
 
 
-drawManager fan = drawManager("042435",30);
+drawManager fan = drawManager("04:24:35",33);
 
 void setup() {
 
