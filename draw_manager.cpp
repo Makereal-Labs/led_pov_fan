@@ -17,9 +17,9 @@ void led_ON(){
   
 }
 
-drawManager::drawManager(char* _letters , byte _startpos) : startpos(_startpos){
+drawManager::drawManager(char * _letters , byte _startpos) : startpos(_startpos){
 
-    letters = _letters;
+    sprintf(letters, "%s", _letters);
     cnt = 0;
     pos = _startpos;
     last_rnd = 0;
@@ -52,7 +52,7 @@ void drawManager::test(){
   
 }
 
-void drawManager::draw(){
+void drawManager::draw_number(){
 
   //digitalWrite(3,(*letter_ptr - '0' < 10 && *letter_ptr - '0' > 0)?HIGH:LOW);
   digitalWrite(3,LOW);
@@ -71,15 +71,22 @@ void drawManager::draw(){
     ++pos;
     
     if(cur_letter->finished()) next();
+    
   }
-
   
 }
+
 void drawManager::next(){
 
     free(cur_letter);
     cnt++;
     if(cnt == 6) return;
     cur_letter = new Drawer(numbers[letters[cnt]-'0']);
+
+}
+
+void drawManager::update_letters(char h, char m, char s){
+
+    sprintf(letters, "%02d%02d%02d", h, m, s);
 
 }

@@ -14,16 +14,18 @@ class drawManager{
     const byte startpos;
     byte pos;
     byte cnt;
-    char* letters;;
+    char letters[90];
     Drawer * cur_letter;
 
   public:
 
     drawManager();
-    drawManager(char* , byte);
+    drawManager(char * , byte);
     void time_update();
     void pos_update();
-    void draw();
+    void draw_number();
+    void draw_pin();
+    void update_letters(char, char, char);
     void test();
     void next();
 
