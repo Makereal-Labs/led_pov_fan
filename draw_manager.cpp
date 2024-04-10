@@ -55,9 +55,7 @@ void drawManager::test(){
 void drawManager::draw_number(){
 
   //digitalWrite(3,(*letter_ptr - '0' < 10 && *letter_ptr - '0' > 0)?HIGH:LOW);
-  digitalWrite(3,LOW);
    if(letters[cnt] == '\0') return;
-  digitalWrite(3,HIGH);
 
   if((micros() - last_rnd)*DISPLAY > rnd_time*pos){
     
