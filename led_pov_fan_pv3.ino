@@ -6,7 +6,7 @@
 #include <TimeLib.h>
 
 
-drawManager fan = drawManager("04:24:35",33);
+drawManager fan = drawManager("04:24:35",33, 4);
 
 void setup() {
 
@@ -26,10 +26,11 @@ void loop() {
 
     fan.time_update();
     fan.update_letters(hour(), minute(), second());
-    while(digitalRead(HALL_PIN) == LOW);
     
   }
 
   fan.draw_number();
+  fan.draw_pin();
+  fan.draw_frame();
   
 }
