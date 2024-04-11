@@ -20,6 +20,7 @@ class drawManager{
     unsigned long hour_angle=0, min_angle=0, sec_angle=0;
     unsigned long frame_angle = 0;
     unsigned long frame_cnt = 0;
+    unsigned long img_cnt = 0;
     int angle_offset;
     bool hour_printed = 0, min_printed = 0;
 
@@ -32,6 +33,7 @@ class drawManager{
     void draw_number();
     void draw_pin();
     void draw_frame();
+    void draw_img();
     void update_letters(char, char, char);
     void test();
     void next();

@@ -30,7 +30,8 @@ void loop() {
   }
 
   fan.draw_number();
-  fan.draw_pin();
-  fan.draw_frame();
+  fan.draw_img();
+  //fan.draw_pin();
+  //fan.draw_frame();
   
 }

@@ -44,6 +44,7 @@ void drawManager::time_update(){
     min_angle = (((minute()+30)%60 * 6 + angle_offset)%360)*rnd_time;
     hour_printed = 0, min_printed = 0;
 
+    img_cnt = 0;
     frame_cnt = angle_offset;
     frame_angle = (frame_cnt*rnd_time);
     
@@ -132,6 +133,22 @@ void drawManager::draw_number(){
     ++pos;
     
     if(cur_letter->finished()) next();
+    
+  }
+  
+}
+
+void drawManager::draw_img(){
+
+  if((micros() - last_rnd)*720 > rnd_time*img_cnt){
+
+    
+    for(byte i = 0; i < 7; ++i){
+  
+      digitalWrite(red_leds[i], (img_buf[img_cnt]&(1<<i) ? HIGH : LOW));
+        
+    }
+    ++img_cnt;
     
   }
   
